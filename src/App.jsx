@@ -9,6 +9,7 @@ import Login from './Pages/Login'
 import CityList from './Components/CityList'
 import CountryList from './Components/CountryList'
 import City from './Components/City'
+import Form from './Components/Form'
 
 const BASE_URL = 'http://localhost:9000'
 function App() {
@@ -42,9 +43,9 @@ function App() {
         <Route path='app' element={<AppLayout />}>
           <Route index element={<CityList cities={cities} isLoading={isLoading} />} />
           <Route path='cities' element={<CityList cities={cities} isLoading={isLoading} />} />
-          <Route path='cities/:id'element={<City />} />
+          <Route path='cities/:id' element={<City />} />
           <Route path='countries' element={<CountryList cities={cities} isLoadin={isLoading} />} />
-          <Route path='form' element={<p>HEllo Bitch form</p>} />
+          <Route path='form' element={<Form />} />
         </Route>
         <Route path='login' element={<Login />} />
         <Route path='*' element={<PageNotFound />} />

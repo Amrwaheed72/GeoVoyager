@@ -6,7 +6,6 @@ import Message from './Message';
 
 function CityList({ cities, isLoading }) {
     if (isLoading) return <Spinner />;
-
     if(!cities.length) return <Message message='add your first city by clicking on the city on the map ' />
     return (
         <ul className={styles.cityList}>
