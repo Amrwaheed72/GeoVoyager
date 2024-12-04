@@ -1,10 +1,11 @@
-import PropTypes from 'prop-types'; // Import PropTypes
 import styles from './CityList.module.css';
 import Spinner from './Spinner';
 import CityItem from './CityItem';
 import Message from './Message';
+import { useCities } from '../contexts/CitiesProvider';
 
-function CityList({ cities, isLoading }) {
+function CityList() {
+const {cities,isLoading} = useCities()
     if (isLoading) return <Spinner />;
     if(!cities.length) return <Message message='add your first city by clicking on the city on the map ' />
     return (
@@ -15,17 +16,5 @@ function CityList({ cities, isLoading }) {
         </ul>
     );
 }
-
-// Add PropTypes for validation
-CityList.propTypes = {
-    cities: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-                .isRequired,
-            name: PropTypes.string, // Define other city properties as needed
-        })
-    ).isRequired,
-    isLoading: PropTypes.bool.isRequired, // Validate isLoading as a required boolean
-};
 
 export default CityList;
