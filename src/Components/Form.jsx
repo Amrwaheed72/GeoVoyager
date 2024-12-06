@@ -12,6 +12,7 @@ import Spinner from "./Spinner";
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import { useCities } from "../contexts/CitiesProvider";
+import { useAuth } from "../contexts/AuthProvider";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -61,6 +62,7 @@ function Form() {
 
   }, [lat, lng])
 
+
   async function handleSubmit(e) {
     e.preventDefault()
     if (!cityName || !date) return
@@ -83,7 +85,7 @@ function Form() {
 
   if (!lat, !lng) return <Message message='Click on anywhere on the Map!' />
   return (
-    <form className={`${styles.form}${isLoading ?styles.loading:""}`} onSubmit={handleSubmit}>
+    <form className={`${styles.form}${isLoading ? styles.loading : ""}`} onSubmit={handleSubmit}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input

@@ -25,30 +25,6 @@
       "id": "17806751"
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": "98443197"
-    },
-    {
-      "id": "0e87",
-      "cityName": "Zaragoza",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-12-06T00:58:31.992Z",
-      "notes": "my lovely city ",
-      "position": {
-        "lat": "41.52502957323801",
-        "lng": "-0.8569335937500001"
-      }
-    },
-    {
       "id": "bbc9",
       "cityName": "Abu Ḩammad",
       "country": "Egypt",
@@ -58,54 +34,6 @@
       "position": {
         "lat": "30.538607878854556",
         "lng": "31.654357910156254"
-      }
-    },
-    {
-      "id": "d30e",
-      "cityName": "Marsa Maţruḩ",
-      "country": "Egypt",
-      "emoji": "🇪🇬",
-      "date": "2024-12-06T01:02:29.796Z",
-      "notes": "asdasd",
-      "position": {
-        "lat": "29.954934549656144",
-        "lng": "27.333984375000004"
-      }
-    },
-    {
-      "id": "992b",
-      "cityName": "Ajdabiya",
-      "country": "Libya",
-      "emoji": "🇱🇾",
-      "date": "2024-12-06T01:10:57.297Z",
-      "notes": "aaaa",
-      "position": {
-        "lat": "27.644606381943326",
-        "lng": "23.642578125000004"
-      }
-    },
-    {
-      "id": "84bb",
-      "cityName": "Vilches",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-12-06T01:10:57.297Z",
-      "notes": "",
-      "position": {
-        "lat": "38.134556577054134",
-        "lng": "-3.5156250000000004"
-      }
-    },
-    {
-      "id": "71c1",
-      "cityName": "Goundam",
-      "country": "Mali",
-      "emoji": "🇲🇱",
-      "date": "2024-12-06T01:12:36.227Z",
-      "notes": "",
-      "position": {
-        "lat": "22.998851594142923",
-        "lng": "-6.152343750000001"
       }
     }
   ]
