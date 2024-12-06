@@ -12,19 +12,19 @@ import useURLPosition from '../hooks/useURLPosition';
 function Map() {
     const { isLoading: isLoadingPosition, position: geoLocationPosition,
         getPosition } = useGeoLocation()
-    const [position, setPostion] = useState([40, 0]);
-    const navigate = useNavigate()
+    const [position, setPosition] = useState([40, 0]);
     const { cities } = useCities()
-    const [lat,lng] = useURLPosition()
+    const [lat, lng] = useURLPosition()
 
     useEffect(
         function () {
-            if (lat && lng) setPostion([lat, lng])
+            if (lat && lng) setPosition([lat, lng])
         }, [lat, lng])
 
     useEffect(function () {
-        if (geoLocationPosition) setPostion([geoLocationPosition.lat, geoLocationPosition.lng])
+        if (geoLocationPosition) setPosition([geoLocationPosition.lat, geoLocationPosition.lng])
     }, [geoLocationPosition])
+
     return (
         <div className={styles.mapContainer} >
             {!geoLocationPosition && <Button type='position' onClick={getPosition}>{isLoadingPosition ? 'loading...' : 'use your position'}</Button>}
@@ -62,11 +62,8 @@ function DetectClick() {
         click: (e) => {
             const lat = e.latlng.lat;
             const lng = e.latlng.lng;
-            // Construct the full path for navigation
             const newUrl = `form?lat=${lat}&lng=${lng}`;
-            // console.log('Navigating to:', newUrl); // Check the URL in the console
-
-            navigate(newUrl); // Navigate to the new URL with query parameters
+            navigate(newUrl);
         },
     });
 
