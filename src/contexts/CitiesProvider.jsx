@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useCallback, useContext, useEffect, useState } from "react"
 
 const CitiesContext = createContext()
 const BASE_URL = 'http://localhost:9000'
@@ -26,20 +26,23 @@ function CitiesProvider({ children }) {
     }, [])
 
 
-    async function getCity(id) {
-        try {
-            setIsLoading(true)
-            const res = await fetch(`${BASE_URL}/cities/${id}`);
-            const data = await res.json()
-            setCurrentCity(data)
-        }
-        catch {
-            alert('Error, cant Find the City')
-        }
-        finally {
-            setIsLoading(false)
-        }
-    }
+    const getCity = useCallback(
+        async function getCity(id) {
+            try {
+                setIsLoading(true)
+                const res = await fetch(`${BASE_URL}/cities/${id}`);
+                const data = await res.json()
+                setCurrentCity(data)
+            }
+            catch {
+                alert('Error, cant Find the City')
+            }
+            finally {
+                setIsLoading(false)
+            }
+        },
+        [currentCity.id]
+    )
 
     async function createCity(newCity) {
         try {
@@ -68,7 +71,7 @@ function CitiesProvider({ children }) {
             const res = await fetch(`${BASE_URL}/cities/${id}`, {
                 method: 'DELETE'
             });
-            setCities(cities => cities.filter(city=>city.id!==id))
+            setCities(cities => cities.filter(city => city.id !== id))
         }
         catch {
             alert('Error, cant Delete the City')
