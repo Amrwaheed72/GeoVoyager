@@ -9,21 +9,21 @@ import CityList from "./Components/CityList";
 import CountryList from "./Components/CountryList";
 import City from "./Components/City";
 import Form from "./Components/Form";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
-import HomePage from './pages/HomePage'
-import Product from './pages/Product'
-import Pricing from './pages/Pricing'
-import PageNotFound from './pages/PageNotFound'
-import AppLayout from './Pages/AppLayout'
-import Login from './Pages/Login'
+// import HomePage from './pages/HomePage'
+// import Product from './pages/Product'
+// import Pricing from './pages/Pricing'
+// import PageNotFound from './pages/PageNotFound'
+// import AppLayout from './Pages/AppLayout'
+// import Login from './Pages/Login'
 
-// const HomePage = lazy(() => import("./pages/Homepage"));
-// const Product = lazy(() => import("./pages/Product"));
-// const Pricing = lazy(() => import("./pages/Pricing"));
-// const PageNotFound = lazy(() => import("./pages/PageNotFound"));
-// const AppLayout = lazy(() => import("./pages/AppLayout"));
-// const Login = lazy(() => import("./pages/Login"));
+const HomePage = lazy(() => import("./pages/Homepage"));
+const Product = lazy(() => import("./pages/Product"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+const AppLayout = lazy(() => import("./pages/AppLayout"));
+const Login = lazy(() => import("./pages/Login"));
 
 function App() {
   return (
