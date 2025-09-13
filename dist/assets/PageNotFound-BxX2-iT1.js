@@ -1,0 +1,1 @@
+import{j as o}from"./index-jz3mB7_e.js";import{P as r}from"./PageNav-BogSm2ew.js";import"./Logo-B1k6NAuy.js";function s(){return o.jsxs("div",{children:[o.jsx(r,{}),o.jsx("h1",{children:"Page not found 😢"})]})}export{s as default};
