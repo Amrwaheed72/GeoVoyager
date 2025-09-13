@@ -9,7 +9,7 @@ import CityList from "./Components/CityList";
 import CountryList from "./Components/CountryList";
 import City from "./Components/City";
 import Form from "./Components/Form";
-import ProtectedRoute from "./pages/ProtectedRoute.jsx";
+import ProtectedRoute from "./ProtectedRoute";
 
 // import HomePage from './pages/HomePage'
 // import Product from './pages/Product'
@@ -18,12 +18,12 @@ import ProtectedRoute from "./pages/ProtectedRoute.jsx";
 // import AppLayout from './Pages/AppLayout'
 // import Login from './Pages/Login'
 
-const HomePage = lazy(() => import("./pages/Homepage.jsx"));
-const Product = lazy(() => import("./pages/Product.jsx"));
-const Pricing = lazy(() => import("./pages/Pricing.jsx"));
-const PageNotFound = lazy(() => import("./pages/PageNotFound.jsx"));
-const AppLayout = lazy(() => import("./pages/AppLayout.jsx"));
-const Login = lazy(() => import("./pages/Login.jsx"));
+const HomePage = lazy(() => import("./pages/Homepage"));
+const Product = lazy(() => import("./pages/Product"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound"));
+const AppLayout = lazy(() => import("./pages/AppLayout"));
+const Login = lazy(() => import("./pages/Login"));
 
 function App() {
   return (
