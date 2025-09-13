@@ -18,12 +18,12 @@ import ProtectedRoute from "./pages/ProtectedRoute.jsx";
 // import AppLayout from './Pages/AppLayout'
 // import Login from './Pages/Login'
 
-const HomePage = lazy(() => import("./pages/Homepage"));
-const Product = lazy(() => import("./pages/Product"));
-const Pricing = lazy(() => import("./pages/Pricing"));
-const PageNotFound = lazy(() => import("./pages/PageNotFound"));
-const AppLayout = lazy(() => import("./pages/AppLayout"));
-const Login = lazy(() => import("./pages/Login"));
+const HomePage = lazy(() => import("./pages/Homepage.jsx"));
+const Product = lazy(() => import("./pages/Product.jsx"));
+const Pricing = lazy(() => import("./pages/Pricing.jsx"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound.jsx"));
+const AppLayout = lazy(() => import("./pages/AppLayout.jsx"));
+const Login = lazy(() => import("./pages/Login.jsx"));
 
 function App() {
   return (
