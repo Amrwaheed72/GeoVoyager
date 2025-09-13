@@ -1,103 +1,83 @@
-import { createContext, useCallback, useContext, useEffect, useState } from "react"
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { cities as initialCities } from "../../data/cities.json"; // 👈 Import your static array
 
-const CitiesContext = createContext()
-const BASE_URL = 'http://localhost:9000'
+const CitiesContext = createContext();
+
 function CitiesProvider({ children }) {
-    const [cities, setCities] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [currentCity, setCurrentCity] = useState({})
+  const [cities, setCities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentCity, setCurrentCity] = useState({});
 
-    useEffect(function () {
-        async function fetchCities() {
-            try {
-                setIsLoading(true)
-                const res = await fetch(`${BASE_URL}/cities`);
-                const data = await res.json()
-                setCities(data)
-            }
-            catch {
-                alert('Error')
-            }
-            finally {
-                setIsLoading(false)
-            }
-        }
-        fetchCities()
-    }, [])
-
-
-    const getCity = useCallback(
-        async function getCity(id) {
-            try {
-                setIsLoading(true)
-                const res = await fetch(`${BASE_URL}/cities/${id}`);
-                const data = await res.json()
-                setCurrentCity(data)
-            }
-            catch {
-                alert('Error, cant Find the City')
-            }
-            finally {
-                setIsLoading(false)
-            }
-        },
-        [currentCity.id]
-    )
-
-    async function createCity(newCity) {
-        try {
-            setIsLoading(true)
-            const res = await fetch(`${BASE_URL}/cities`, {
-                method: 'POST',
-                body: JSON.stringify(newCity),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            });
-            const data = await res.json()
-            setCities(cities => [...cities, data])
-        }
-        catch {
-            alert('Error, cant Create the City')
-        }
-        finally {
-            setIsLoading(false)
-        }
+  // Load cities from localStorage (or fallback to initialCities)
+  useEffect(() => {
+    setIsLoading(true);
+    const storedCities = localStorage.getItem("cities");
+    if (storedCities) {
+      setCities(JSON.parse(storedCities));
+    } else {
+      setCities(initialCities);
+      localStorage.setItem("cities", JSON.stringify(initialCities));
     }
+    setIsLoading(false);
+  }, []);
 
-    async function deleteCity(id) {
-        try {
-            setIsLoading(true)
-            const res = await fetch(`${BASE_URL}/cities/${id}`, {
-                method: 'DELETE'
-            });
-            setCities(cities => cities.filter(city => city.id !== id))
-        }
-        catch {
-            alert('Error, cant Delete the City')
-        }
-        finally {
-            setIsLoading(false)
-        }
+  const getCity = useCallback((id) => {
+    setIsLoading(true);
+    const storedCities = JSON.parse(localStorage.getItem("cities")) || [];
+    const city = storedCities.find((c) => c.id === id);
+    if (city) {
+      setCurrentCity(city);
+    } else {
+      alert("Error, can't Find the City");
     }
+    setIsLoading(false);
+  }, []);
 
-    return (
-        <CitiesContext.Provider value={{
-            cities,
-            isLoading,
-            currentCity,
-            getCity,
-            createCity,
-            deleteCity
-        }}>
-            {children}
-        </CitiesContext.Provider>
-    )
+  function createCity(newCity) {
+    setIsLoading(true);
+    const cityWithId = { ...newCity, id: crypto.randomUUID() };
+    setCities((prev) => {
+      const updatedCities = [...prev, cityWithId];
+      localStorage.setItem("cities", JSON.stringify(updatedCities)); // persist
+      return updatedCities;
+    });
+    setIsLoading(false);
+  }
 
+  function deleteCity(id) {
+    setIsLoading(true);
+    setCities((prev) => {
+      const updatedCities = prev.filter((city) => city.id !== id);
+      localStorage.setItem("cities", JSON.stringify(updatedCities)); // persist
+      return updatedCities;
+    });
+    setIsLoading(false);
+  }
+
+  return (
+    <CitiesContext.Provider
+      value={{
+        cities,
+        isLoading,
+        currentCity,
+        getCity,
+        createCity,
+        deleteCity,
+      }}
+    >
+      {children}
+    </CitiesContext.Provider>
+  );
 }
+
 function useCities() {
-    const context = useContext(CitiesContext)
-    return context
+  return useContext(CitiesContext);
 }
 
-export { CitiesProvider, useCities }
+export { CitiesProvider, useCities };

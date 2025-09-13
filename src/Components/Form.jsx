@@ -5,14 +5,13 @@ import { useEffect, useState } from "react";
 import styles from "./Form.module.css";
 import Button from "./Button";
 import BackButton from "./BackButton";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useURLPosition from "../hooks/useURLPosition";
 import Message from './Message'
 import Spinner from "./Spinner";
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 import { useCities } from "../contexts/CitiesProvider";
-import { useAuth } from "../contexts/AuthProvider";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -30,7 +29,6 @@ function Form() {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams();
   const [lat, lng] = useURLPosition()
   const [isLoadingGeo, setIsLoadingGeo] = useState(false)
   const [emoji, setEmoji] = useState('')
@@ -83,7 +81,7 @@ function Form() {
 
   if (geoError) return <Message message={geoError} />
 
-  if (!lat, !lng) return <Message message='Click on anywhere on the Map!' />
+  if (!lat && !lng) return <Message message='Click on anywhere on the Map!' />
   return (
     <form className={`${styles.form}${isLoading ? styles.loading : ""}`} onSubmit={handleSubmit}>
       <div className={styles.row}>
