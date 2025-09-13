@@ -9,7 +9,7 @@ import CityList from "./Components/CityList";
 import CountryList from "./Components/CountryList";
 import City from "./Components/City";
 import Form from "./Components/Form";
-import ProtectedRoute from "./pages/ProtectedRoute";
+import ProtectedRoute from "./pages/ProtectedRoute.jsx";
 
 // import HomePage from './pages/HomePage'
 // import Product from './pages/Product'
